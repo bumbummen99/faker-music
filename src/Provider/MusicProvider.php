@@ -23,7 +23,7 @@ class MusicProvider extends Base
 
         /* Check if it does exist */
         if (! is_dir($haystack)) {
-            throw new \Exception("There is no test data for the genere '$genere' at '$haystack'");
+            throw new \Exception("There is no data for the genere '$genere'!");
         }
 
         /* Normal File Provider behaivour from here on */

@@ -40,4 +40,12 @@ class MusicTest extends TestCase
 
         $this->assertTrue(file_exists($file));
     }
+
+    public function test_genere_does_not_exist(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('There is no data for the genere \'DOESNOTEXIST\'!');
+
+        $file = $this->faker->music('DOESNOTEXIST', $this->fileSystem->url('/'));
+    }
 }
