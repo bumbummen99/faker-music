@@ -1,0 +1,21 @@
+{
+    "name": "skyraptor/faker-music",
+    "description": "Faker Provider for mp3 music files",
+    "type": "library",
+    "require-dev": {
+        "fakerphp/faker": "^1.19"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patrick Henninger",
+            "email": "privat@skyraptor.eu"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SkyRaptor\\FakerMusic\\": "src/"
+        }
+    }
+}
