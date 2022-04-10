@@ -3,6 +3,7 @@ Faker Provider for mp3 music files
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/skyraptor/faker-music.svg?style=flat-square)](https://packagist.org/packages/skyraptor/faker-music)
 [![CI](https://github.com/bumbummen99/faker-music/actions/workflows/ci.yml/badge.svg)](https://github.com/bumbummen99/faker-music/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/bumbummen99/faker-music/branch/master/graph/badge.svg)](https://codecov.io/gh/bumbummen99/faker-music)
 [![Total Downloads](https://img.shields.io/packagist/dt/skyraptor/faker-music.svg?style=flat-square)](https://packagist.org/packages/skyraptor/faker-music)
 
 ## Installation
