@@ -4,54 +4,40 @@ namespace SkyRaptor\FakerMusic\Provider;
 
 use Faker\Provider\Base;
 use Faker\Provider\File;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use RegexIterator;
 
 class MusicProvider extends Base
 {
-    public static function random(string $targetDirectory, bool $fullPath = true)
+    public static function randomMusic(string $targetDirectory, bool $fullPath = true)
     {
-        return File::file(static::randomElement(self::getFilePaths()), $targetDirectory, $fullPath);
+        /* Pick a random genere */
+        $genere = static::randomElement(self::getGeneres());
+
+        /* Use normal music method */
+        return self::music($genere, $targetDirectory, $fullPath);
     }
 
-    public static function genere(string $genere, string $targetDirectory, bool $fullPath = true)
+    public static function music(string $genere, string $targetDirectory, bool $fullPath = true)
     {
-        if (is_dir(__DIR__ . '/../data/converted/' . $genere)) {
-            throw new \Exception("There is no test data for the genere '$genere'");
+        /* Build the path to the genere */
+        $haystack = __DIR__ . '/../../data/converted/' . $genere;
+
+        /* Check if it does exist */
+        if (! is_dir($haystack)) {
+            throw new \Exception("There is no test data for the genere '$genere' at '$haystack'");
         }
 
-        return File::file(static::randomElement(self::getFilePaths($genere)), $targetDirectory, $fullPath);
+        /* Normal File Provider behaivour from here on */
+        return File::file($haystack, $targetDirectory, $fullPath);
     }
 
-    /**
-     * Searches the converted data directory for mp3 files with
-     * the fiven genere or all.
-     *
-     * @param string $genere
-     * @return array
-     */
-    private static function getFilePaths(string $genere = '.*'): array
+    private static function getGeneres(): array
     {
-        return self::rsearch(__DIR__ . '\\/..\\/data\\/converted', $genere . '\\/.*.mp3');
-    }
+        $generes = [];
 
-    /**
-     * https://stackoverflow.com/a/17161106
-     *
-     * @param string $folder
-     * @param string $regPattern
-     * @return array
-     */
-    private static function rsearch(string $folder, string $regPattern): array
-    {
-        $dir = new RecursiveDirectoryIterator($folder);
-        $ite = new RecursiveIteratorIterator($dir);
-        $files = new RegexIterator($ite, $regPattern, RegexIterator::GET_MATCH);
-        $fileList = array();
-        foreach($files as $file) {
-            $fileList = array_merge($fileList, $file);
+        foreach(glob(__DIR__ . '/../../data/converted/*', GLOB_ONLYDIR) as $dir) {
+            $generes[] = basename($dir);
         }
-        return $fileList;
+
+        return $generes;
     }
 }

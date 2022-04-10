@@ -4,7 +4,8 @@
     "type": "library",
     "require-dev": {
         "fakerphp/faker": "^1.19",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "mikey179/vfsstream": "^1.6"
     },
     "license": "MIT",
     "authors": [
