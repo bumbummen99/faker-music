@@ -3,7 +3,8 @@
     "description": "Faker Provider for mp3 music files",
     "type": "library",
     "require-dev": {
-        "fakerphp/faker": "^1.19"
+        "fakerphp/faker": "^1.19",
+        "phpunit/phpunit": "^9.5"
     },
     "license": "MIT",
     "authors": [
@@ -12,10 +13,14 @@
             "email": "privat@skyraptor.eu"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4": {
             "SkyRaptor\\FakerMusic\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SkyRaptor\\Tests\\FakerMusic\\": "tests/"
         }
     }
 }
